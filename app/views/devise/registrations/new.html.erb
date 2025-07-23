@@ -15,11 +15,6 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-
-    <div class="mb-3">
-      <%= f.label :role, "Account Type" %>
-      <%= f.select :role, User.roles.except("admin").keys.map { |r| [r.titleize, r] }, { include_blank: true }, class: "form-select" %>
-    </div>
   </div>
 
   <div class="form-actions">
