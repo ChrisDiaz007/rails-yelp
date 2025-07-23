@@ -1,7 +1,13 @@
 <h1>Welcome to <%= @restaurant.name %></h1>
+<p> <%= link_to "Edit Restaurant", edit_restaurant_path %> </p>
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number %></p>
 <p><%= @restaurant.category %></p>
-<%= link_to "Delete", restaurant_path(@restaurant),
+<% @restaurant.reviews.each do |review| %>
+  <p>Rating: <%= "⭐️" * review.rating %></p>
+  <p>Review: <%= review.content %>
+    <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> </p>
+<% end %>
+<%= link_to "Delete Restaurant", restaurant_path(@restaurant),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 %>
