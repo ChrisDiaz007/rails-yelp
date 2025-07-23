@@ -1,4 +1,3 @@
-
 <div class="container my-4">
   <h1 class="mb-4">Restaurants</h1>
   <div class="row">
@@ -22,14 +21,15 @@
     <% end %>
   </div>
   <%= link_to "Add New Restaurant", new_restaurant_path, class: "btn btn-success mt-4" %>
-</div>
 
-<div class="col-4">
-  <div class="map-container">
-    <div class="map-view"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="col-4">
+    <div class="map-container">
+      <div class="map-view"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
   </div>
+
 </div>
