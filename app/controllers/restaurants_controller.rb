@@ -31,7 +31,6 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-
     @restaurant.destroy
 
     redirect_to restaurants_path, status: :see_other
@@ -46,5 +45,4 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
-
 end
