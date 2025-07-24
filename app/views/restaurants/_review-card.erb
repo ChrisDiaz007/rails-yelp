@@ -1,0 +1,27 @@
+<% @restaurant.reviews.each do |review| %>
+<div class="card shadow-sm border-1 rounded-lg" style="max-width: 24rem;">
+  <div class="card-body">
+    <div class="d-flex align-items-center mb-3">
+      <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center" style="width: 48px; height: 48px; font-weight: 600; font-size: 1.25rem;">
+        <%= review.user.first_name&.first&.upcase %><%= review.user.last_name&.first&.upcase %>
+      </div>
+      <div class="ms-3">
+        <div class="fw-medium text-dark"><%= review.user.first_name %> <%= review.user.last_name %></div>
+        <div class="text-muted small">Content Creator</div>
+      </div>
+    </div>
+
+    <div class="text-danger mb-2 fs-5">
+      <%= "⭐️" * review.rating %>
+    </div>
+
+    <p class="text-secondary">
+      <%= review.content %>
+    </p>
+
+    <div class="text-danger fw-medium" style="cursor: pointer;">
+      <a href="#" class="text-decoration-none text-danger">Read more</a>
+    </div>
+  </div>
+</div>
+<% end %>

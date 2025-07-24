@@ -7,15 +7,8 @@
 
 <%= link_to "Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-success" %>
 
+<%= render "review-card" %>
 
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.phone_number %></p>
-<p><%= @restaurant.category %></p>
-
-<% @restaurant.reviews.each do |review| %>
-  <p>Rating: <%= "⭐️" * review.rating %></p>
-  <p>Review: <%= review.content %>
-<% end %>
 
 <p><%= link_to "Go back", restaurants_path %></p>
 

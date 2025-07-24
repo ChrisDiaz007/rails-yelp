@@ -9,6 +9,7 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <div class="card-product-infos">
             <h2><%= restaurant.name %></h2>
+            <p><%= restaurant.reviews.average(:rating).to_f.round(1)%>⭐️ (<%= restaurant.reviews.count %> reviews)</p>
             <p><%= restaurant.phone_number %></p>
             <p><%= restaurant.address %></p>
             <p><%= restaurant.category %></p>

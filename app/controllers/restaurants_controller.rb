@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
         lng: restaurant.longitude
       }
     end
+
   end
 
   def show
