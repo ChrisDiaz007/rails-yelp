@@ -35,11 +35,15 @@
   object-fit: cover;
 }
 
-.map-view {
-  height: 400px;
-  width: 100%;
+// Map Container
+.map-container {
+  height: 100%;
 }
 
+.map-view {
+  height: 100%;
+  width: 100%;
+}
 @import "components/index";
 
 // Card product
