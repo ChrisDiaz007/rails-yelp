@@ -1,12 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1>Welcome to <%= @restaurant.name %></h1>
-    <p>reviews</p>
     <a class="text-decoration-none text-blue">Owner: <span class="text-white"><%= @restaurant.user.first_name %> <%= @restaurant.user.last_name %></span></a>
   </div>
 </div>
 
-<p>White a review</p>
+<%= link_to "Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-success" %>
 
 
 <p><%= @restaurant.address %></p>
