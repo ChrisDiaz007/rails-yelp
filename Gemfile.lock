@@ -349,7 +349,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
-  pg (~> 1.5)
+  pg
   puma (>= 5.0)
   pundit
   rails (~> 7.1.5, >= 7.1.5.1)
@@ -358,7 +358,7 @@ DEPENDENCIES
   sassc-rails
   simple_form
   sprockets-rails
-  sqlite3 (>= 1.4)
+  sqlite3
   stimulus-rails
   turbo-rails
   tzinfo-data
