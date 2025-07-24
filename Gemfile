@@ -66,3 +66,5 @@ gem 'devise'
 gem 'pundit'
 gem "geocoder"
 gem 'dotenv-rails'
+
+gem "cloudinary"
