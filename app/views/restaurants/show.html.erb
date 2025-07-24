@@ -1,11 +1,12 @@
-<h1>Welcome to <%= @restaurant.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Welcome to <%= @restaurant.name %></h1>
+    <p>reviews</p>
+    <a class="text-decoration-none text-blue">Owner: <span class="text-white"><%= @restaurant.user.first_name %> <%= @restaurant.user.last_name %></span></a>
+  </div>
+</div>
 
-
-<p>
-  <% if policy(@restaurant).edit? %>
-    <%= link_to "Edit Restaurant", edit_restaurant_path %>
-  <% end %>
-</p>
+<p>White a review</p>
 
 
 <p><%= @restaurant.address %></p>
@@ -17,10 +18,16 @@
   <p>Review: <%= review.content %>
 <% end %>
 
+<p><%= link_to "Go back", restaurants_path %></p>
+
+<p>
+  <% if policy(@restaurant).edit? %>
+    <%= link_to "Edit Restaurant", edit_restaurant_path, class: "btn btn-primary" %>
+  <% end %>
+</p>
+
 <% if policy(@restaurant).destroy? %>
-  <%= link_to "Delete Restaurant", restaurant_path(@restaurant),
+  <%= link_to "Delete Restaurant", restaurant_path(@restaurant), class: "btn btn-danger",
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
 <% end %>
-
-<p><%= link_to "Go back", restaurants_path %></p>

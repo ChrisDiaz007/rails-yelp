@@ -1,27 +1,21 @@
 <div class="container my-4">
   <h1 class="mb-4">Restaurants</h1>
-  <div class="row">
-    <% @restaurants.each do |restaurant| %>
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= link_to restaurant.name, restaurant_path(restaurant), class: "text-decoration-none" %>
-            </h5>
-            <ul class="list-group list-group-flush mb-3">
-              <li class="list-group-item"><strong>Address:</strong> <%= restaurant.address %></li>
-              <li class="list-group-item"><strong>Phone:</strong> <%= restaurant.phone_number %></li>
-              <li class="list-group-item"><strong>Category:</strong> <%= restaurant.category %></li>
-            </ul>
-            <%= link_to "Show", restaurant_path(restaurant), class: "btn btn-outline-primary btn-sm" %>
-            <%= link_to "Edit", edit_restaurant_path(restaurant), class: "btn btn-outline-secondary btn-sm" %>
-          </div>
+
+  <%= link_to "Add New Restaurant", new_restaurant_path, class: "btn btn-success mt-4" %>
+
+<% @restaurants.each do |restaurant| %>
+  <%= link_to restaurant_path(restaurant), class: "text-decoration-none text-dark" do %>
+    <div class="card-product my-1">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2><%= restaurant.name %></h2>
+            <p><%= restaurant.phone_number %></p>
+            <p><%= restaurant.address %></p>
+            <p><%= restaurant.category %></p>
         </div>
       </div>
     <% end %>
-  </div>
-  <%= link_to "Add New Restaurant", new_restaurant_path, class: "btn btn-success mt-4" %>
-
+  <% end %>
 </div>
 
   <div class="col-4">
