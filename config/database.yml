@@ -5,14 +5,9 @@
 #   gem "sqlite3"
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV['PGDATABASE'] %>
-  username: <%= ENV['PGUSER'] %>
-  password: <%= ENV['PGPASSWORD'] %>
-  host: <%= ENV['PGHOST'] %>
-  port: <%= ENV['PGPORT'] %>
+  timeout: 5000
 
 development:
   <<: *default
