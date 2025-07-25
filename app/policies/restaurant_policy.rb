@@ -26,7 +26,7 @@ class RestaurantPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return record.user == user
+    return user.admin? || record.user == user
   end
 
 end
