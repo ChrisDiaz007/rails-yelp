@@ -2,11 +2,11 @@
   <div class="d-flex col-7">
 
     <div class="col-2">
-      <p>temporary grid</p>
+      <!-- grid-->
     </div>
 
   <div class="col-10">
-    <h2>Restaurants in Shibuya</h1>
+    <h2 class="py-4">Restaurants in Shibuya</h1>
     <% @restaurants.each do |restaurant| %>
         <%= link_to restaurant_path(restaurant), class: "text-decoration-none text-dark" do %>
           <div class="card-product my-1">

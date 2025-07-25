@@ -6,10 +6,10 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def new?
-    user.present?
+    return create?
   end
 
   def create?
-    user.present?
+    user.present? && record.restaurant.user != user
   end
 end
