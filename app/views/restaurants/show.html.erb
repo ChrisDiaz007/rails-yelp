@@ -1,16 +1,44 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "RestaurantsBackground.png" %>);">
   <div class="container">
     <h1>Welcome to <%= @restaurant.name %></h1>
-    <a class="text-decoration-none text-blue">Owner: <span class="text-white"><%= @restaurant.user.first_name %> <%= @restaurant.user.last_name %></span></a>
+    <p><%= @restaurant.reviews.average(:rating).to_f.round(1)%>⭐️ (<%= @restaurant.reviews.count %> reviews)</p>
+    <p><%= @restaurant.category %></p>
   </div>
 </div>
 
-<%= link_to "Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-success" %>
+<div class="container d-flex pt-5">
+  <div class="col-8 pe-5">
+    <div class="mb-4 border-bottom pb-4">
+    <%= link_to "☆ Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-success" %>
+    </div>
 
-<%= render "review-card" %>
+    <div class="border-bottom" style="height: 320px">
+      <div class="map-container" style="height: 200px; width: 350px">
+        <p><strong>Location</strong></p>
+        <div class="map-view"
+          data-controller="map"
+          data-map-markers-value='<%= [{ lat: @restaurant.latitude, lng: @restaurant.longitude }].to_json %>'
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <p><%= @restaurant.address %></p>
+      </div>
+    </div>
 
 
-<p><%= link_to "Go back", restaurants_path %></p>
+    <div class="mt-5"><%= render "review-card" %></div>
+
+  </div>
+
+  <div class="col-4">
+    <div class="card" style="max-width: 300px">
+      <div><p class="border-bottom text-decoration-none text-dark p-3"><i class="fa-solid fa-user-secret"></i> <%= @restaurant.user.first_name %> <%= @restaurant.user.last_name %></p></div>
+      <div><p class="px-3 pb-3 border-bottom"><i class="fa-solid fa-phone-volume"></i> <%= @restaurant.phone_number %></p></div>
+      <div>
+      <p class="px-3"><i class="fa-solid fa-map-location-dot"></i> Get Directions</p>
+      <p class="px-3"><%= @restaurant.address %></p></div>
+    </div>
+  </div>
+</div>
 
 <p>
   <% if policy(@restaurant).edit? %>

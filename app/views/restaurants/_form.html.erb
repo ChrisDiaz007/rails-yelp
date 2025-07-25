@@ -3,5 +3,6 @@
   <%= f.input :address %>
   <%= f.input :phone_number %>
   <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: "Select a category" %>
+  <%= f.input :photo, as: :file, label: "Upload a photo" %>
   <%= f.submit 'Submit', class: 'btn btn-success mt-2' %>
 <% end %>

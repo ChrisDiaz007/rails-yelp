@@ -1,39 +1,41 @@
-  <div class="d-flex" style="height: 100vh;">
-    <div class="d-flex col-7">
+<div class="d-flex" style="height: 100vh;">
+  <div class="d-flex col-7">
 
-      <div class="col-2">
+    <div class="col-2">
       <p>temporary grid</p>
-      </div>
+    </div>
 
-    <div class="col-10">
-      <h2>Restaurants in Shibuya</h1>
-      <% @restaurants.each do |restaurant| %>
-          <%= link_to restaurant_path(restaurant), class: "text-decoration-none text-dark" do %>
-            <div class="card-product my-1">
+  <div class="col-10">
+    <h2>Restaurants in Shibuya</h1>
+    <% @restaurants.each do |restaurant| %>
+        <%= link_to restaurant_path(restaurant), class: "text-decoration-none text-dark" do %>
+          <div class="card-product my-1">
+            <% if restaurant.photo.attached? %>
+              <%= cl_image_tag restaurant.photo.key, height: 400, width: 400, crop: :fill %>
+            <% else %>
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
-                <h2><%= restaurant.name %></h2>
-                <p><%= restaurant.reviews.average(:rating).to_f.round(1)%>⭐️ (<%= restaurant.reviews.count %> reviews)</p>
-                <p><%= restaurant.phone_number %></p>
-                <p><%= restaurant.address %></p>
-                <p><%= restaurant.category %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-
-
+            <% end %>
+          <div class="card-product-infos">
+            <h2><%= restaurant.name %></h2>
+            <p><%= restaurant.reviews.average(:rating).to_f.round(1)%>⭐️ (<%= restaurant.reviews.count %> reviews)</p>
+            <p><%= restaurant.address %></p>
+            <p><%= restaurant.category %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
+
+</div>
   <div class="col-5">
     <div class="map-container">
-      <div class="map-view"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div class="map-view"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
-  </div>
   </div>
 </div>
 
-  <%= link_to "Add New Restaurant", new_restaurant_path, class: "btn btn-success mt-4" %>
+<%= link_to "Add New Restaurant", new_restaurant_path, class: "btn btn-success mt-4" %>
